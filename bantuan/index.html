@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pusat Bantuan & FAQ — Muslimate</title>
+  <meta name="description" content="Pusat Bantuan dan Tanya Jawab (FAQ) aplikasi Muslimate. Solusi notifikasi adzan, kalibrasi arah kiblat, jadwal sholat, dan bantuan teknis.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'><circle cx='13' cy='13' r='12' fill='%230F2A44'/><path d='M8.5 17.5V12a4.5 4.5 0 0 1 9 0v5.5' stroke='%23C9A961' stroke-width='1.5' fill='none'/></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap');
+
+    :root {
+      --primary-navy: #0F2A44;
+      --primary-navy-dark: #0A1B2C;
+      --primary-navy-light: #183C60;
+      --gold-accent: #C9A961;
+      --gold-light: #F4EDE0;
+      --gold-hover: #B8934A;
+      --bg-warm: #FAF8F5;
+      --bg-card: #FFFFFF;
+      --text-main: #1A2838;
+      --text-muted: #5C6E82;
+      --text-light: #8E9EAF;
+      --border-subtle: #E8E4DC;
+      --border-focus: #C9A961;
+      --shadow-sm: 0 2px 8px rgba(15, 42, 68, 0.04);
+      --shadow-md: 0 8px 24px rgba(15, 42, 68, 0.08);
+      --shadow-lg: 0 16px 40px rgba(15, 42, 68, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --max-width: 1080px;
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-main); background-color: var(--bg-warm); color: var(--text-main); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: var(--primary-navy); text-decoration: none; transition: all 0.2s ease; }
+    a:hover { color: var(--gold-accent); }
+
+    /* Header */
+    header.site-header { background: rgba(250, 248, 245, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-subtle); }
+    .nav-container { max-width: var(--max-width); margin: 0 auto; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; position: relative; }
+    .brand-logo { display: flex; align-items: center; gap: 0.75rem; font-weight: 800; font-size: 1.35rem; color: var(--primary-navy); letter-spacing: -0.02em; }
+    .brand-logo svg { width: 32px; height: 32px; flex-shrink: 0; }
+    .brand-logo span.dot { color: var(--gold-accent); }
+    nav.main-nav { display: flex; align-items: center; gap: 1.75rem; }
+    nav.main-nav a { font-size: 0.95rem; font-weight: 600; color: var(--text-muted); }
+    nav.main-nav a:hover, nav.main-nav a.active { color: var(--primary-navy); }
+    .nav-cta { background: var(--primary-navy); color: #FFFFFF !important; padding: 0.55rem 1.25rem; border-radius: var(--radius-full); font-size: 0.9rem; font-weight: 600; }
+    .nav-cta:hover { background: var(--primary-navy-light); }
+    .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.4rem 0.6rem; cursor: pointer; color: var(--primary-navy); font-size: 1.25rem; }
+
+    /* Content */
+    .content-page { max-width: 820px; margin: 2.5rem auto 5rem; padding: 0 1.5rem; }
+    .page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-subtle); }
+    .page-header h1 { font-size: 2.4rem; font-weight: 800; color: var(--primary-navy); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .page-header .last-updated { font-size: 0.9rem; color: var(--text-muted); }
+    .callout-box { background: var(--gold-light); border-left: 4px solid var(--gold-accent); padding: 1.25rem 1.5rem; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 1.5rem 0; }
+    .callout-box p { margin-bottom: 0; font-size: 0.95rem; color: var(--primary-navy); }
+
+    /* FAQ List */
+    .faq-list { margin-top: 1.5rem; }
+    .faq-category-title { font-size: 1.35rem; font-weight: 700; color: var(--primary-navy); margin: 2.5rem 0 1rem; }
+    .faq-item { border: 1px solid var(--border-subtle); border-radius: var(--radius-md); margin-bottom: 1rem; background: var(--bg-card); overflow: hidden; transition: all 0.2s ease; box-shadow: var(--shadow-sm); }
+    .faq-item:hover { border-color: var(--gold-accent); }
+    .faq-question { padding: 1.25rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; color: var(--primary-navy); font-size: 1.05rem; }
+    .faq-answer { padding: 0 1.5rem 1.25rem; color: var(--text-main); line-height: 1.65; font-size: 0.98rem; }
+    .faq-answer p { margin-bottom: 0.75rem; }
+    .faq-answer ol, .faq-answer ul { margin: 0.5rem 0 0.75rem 1.5rem; }
+    .faq-answer li { margin-bottom: 0.35rem; }
+
+    .playstore-button { display: inline-flex; align-items: center; gap: 0.85rem; background: var(--primary-navy); color: #FFFFFF !important; padding: 0.85rem 1.75rem; border-radius: var(--radius-md); box-shadow: var(--shadow-md); transition: all 0.25s ease; font-weight: 600; text-align: left; }
+    .playstore-button:hover { background: var(--primary-navy-light); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+    /* Footer */
+    footer.site-footer { background: var(--primary-navy); color: #FFFFFF; padding: 4rem 1.5rem 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+    .footer-container { max-width: var(--max-width); margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3.5rem; }
+    .footer-brand h4 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.6rem; }
+    .footer-brand p { color: var(--text-light); font-size: 0.95rem; max-width: 360px; line-height: 1.6; }
+    .footer-links h5 { font-size: 1rem; font-weight: 700; color: var(--gold-accent); margin-bottom: 1.15rem; }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 0.75rem; }
+    .footer-links a { color: var(--text-light); font-size: 0.92rem; }
+    .footer-links a:hover { color: #FFFFFF; }
+    .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.88rem; color: var(--text-light); }
+    .footer-bottom a { color: var(--gold-accent); }
+
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .mobile-menu-btn { display: block; }
+      nav.main-nav { display: none; }
+      nav.main-nav.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg-card); padding: 1.5rem; border-bottom: 1px solid var(--border-subtle); box-shadow: var(--shadow-md); gap: 1.25rem; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="../index.html" class="brand-logo">
+        <svg width="28" height="28" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="13" cy="13" r="12" stroke="#C9A961" stroke-width="1.2" opacity="0.35"/>
+          <path d="M8.5 17.5V12C8.5 9.5 10.5 7.5 13 7.5C15.5 7.5 17.5 9.5 17.5 12V17.5" stroke="#C9A961" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M7.5 17.5H18.5" stroke="#C9A961" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M11.5 17.5V15C11.5 14.2 12.2 13.5 13 13.5C13.8 13.5 14.5 14.2 14.5 15V17.5" stroke="#C9A961" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="13" cy="5.2" r="0.9" fill="#C9A961"/>
+        </svg>
+        Muslimate<span class="dot">.</span>
+      </a>
+
+      <button class="mobile-menu-btn" onclick="document.querySelector('.main-nav').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+
+      <nav class="main-nav">
+        <a href="../index.html">Beranda</a>
+        <a href="../bantuan/index.html" class="active">Bantuan & FAQ</a>
+        <a href="../privasi/index.html">Kebijakan Privasi</a>
+        <a href="../syarat-ketentuan/index.html">Syarat & Ketentuan</a>
+        <a href="https://play.google.com/store/apps/details?id=id.muslimate.app" class="nav-cta" target="_blank" rel="noopener">Unduh Aplikasi</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Content Section -->
+  <main class="content-page">
+    <div class="page-header">
+      <h1>Pusat Bantuan & FAQ</h1>
+      <p class="last-updated">Panduan penggunaan dan solusi kendala teknis aplikasi Muslimate</p>
+    </div>
+
+    <div class="callout-box">
+      <p>Mengalami kendala yang belum tercantum di bawah? Hubungi tim pengembang kami langsung melalui email di <a href="mailto:muslimate.app@gmail.com"><strong>muslimate.app@gmail.com</strong></a>. Kami siap membantu!</p>
+    </div>
+
+    <div class="faq-list">
+      
+      <!-- Kategori 1: Notifikasi & Adzan -->
+      <h2 class="faq-category-title">1. Notifikasi & Suara Adzan</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Mengapa suara adzan atau notifikasi sholat tidak bunyi atau telat?</span>
+        </div>
+        <div class="faq-answer">
+          <p>Pada sebagian besar perangkat Android (khususnya Xiaomi, Oppo, Vivo, Realme, dan Samsung), sistem operasi memiliki fitur agresif penghemat baterai (*Battery Optimization* / *App Standby*) yang secara otomatis mematikan aplikasi di latar belakang.</p>
+          <p><strong>Langkah Mengatasinya:</strong></p>
+          <ol>
+            <li>Buka <strong>Pengaturan Ponsel &gt; Aplikasi &gt; Muslimate</strong>.</li>
+            <li>Pilih <strong>Baterai / Pengoptimalan Baterai</strong>, lalu ubah dari "Dioptimalkan" menjadi <strong>"Tidak Dibatasi" (*Unrestricted*)</strong>.</li>
+            <li>(Untuk HP Xiaomi/MIUI): Aktifkan <strong>Mulai Otomatis (*Auto-start*)</strong>.</li>
+            <li>Pastikan izin <strong>Alarm & Pengingat (*Alarms & Reminders*)</strong> diizinkan untuk Muslimate di pengaturan sistem Android.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Bagaimana cara mengaktifkan atau menonaktifkan adzan untuk sholat tertentu saja?</span>
+        </div>
+        <div class="faq-answer">
+          <p>Anda memiliki fleksibilitas penuh mengatur pengingat untuk masing-masing waktu sholat:</p>
+          <ol>
+            <li>Buka aplikasi Muslimate.</li>
+            <li>Masuk ke menu <strong>Pengaturan &gt; Pengingat Sholat</strong>.</li>
+            <li>Aktifkan atau matikan sakelar (*toggle*) untuk waktu sholat yang Anda kehendaki (Subuh, Terbit, Dzuhur, Ashar, Maghrib, Isya, atau Tahajjud).</li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Kategori 2: Arah Kiblat & Kompas -->
+      <h2 class="faq-category-title">2. Arah Kiblat & Kompas</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Mengapa kompas kiblat saya terus berputar atau arahnya tidak tepat?</span>
+        </div>
+        <div class="faq-answer">
+          <p>Akurasi kompas digital sangat bergantung pada sensor magnetometer ponsel Anda dan lingkungan sekitar. Lakukan hal berikut untuk mengatasinya:</p>
+          <ol>
+            <li><strong>Kalibrasi Sensor:</strong> Pegang ponsel Anda dan gerakkan di udara membentuk pola <strong>angka delapan (&infin;)</strong> beberapa kali hingga arah kompas stabil.</li>
+            <li><strong>Jauhkan dari Benda Logam & Magnet:</strong> Pastikan Anda tidak berada dekat speaker besar, laptop, besi beton bertulang, atau menggunakan <em>casing ponsel</em> yang memiliki pengait magnet/ring besi.</li>
+            <li><strong>Posisikan HP Datar:</strong> Letakkan atau pegang ponsel secara mendatar sejajar dengan permukaan lantai.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Apakah kompas kiblat membutuhkan kuota internet?</span>
+        </div>
+        <div class="faq-answer">
+          <p><strong>Tidak.</strong> Kompas kiblat bekerja secara offline menggunakan sensor magnetometer internal ponsel Anda. GPS hanya diperlukan satu kali saat mendeteksi lokasi awal Anda untuk menentukan garis lintang dan bujur.</p>
+        </div>
+      </div>
+
+      <!-- Kategori 3: Jadwal Sholat -->
+      <h2 class="faq-category-title">3. Jadwal Sholat & Lokasi</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Mengapa jadwal sholat di aplikasi ada selisih 1-2 menit dengan masjid sekitar?</span>
+        </div>
+        <div class="faq-answer">
+          <p>Muslimate menggunakan metode perhitungan hisab resmi yang diakui (termasuk standar Kementerian Agama Republik Indonesia - Kemenag). Selisih 1-2 menit umumnya terjadi karena:</p>
+          <ul>
+            <li>Perbedaan titik koordinat GPS yang sangat spesifik (ketinggian dan posisi geografis).</li>
+            <li>Adanya waktu *Ihtiyati* (tambahan menit pengaman) yang diterapkan secara lokal oleh pengurus masjid setempat.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Bagaimana cara memperbarui lokasi jika saya sedang bepergian?</span>
+        </div>
+        <div class="faq-answer">
+          <p>Cukup buka aplikasi Muslimate di kota tujuan Anda, pastikan GPS aktif, dan buka menu <strong>Pengaturan &gt; Lokasi</strong> lalu klik ikon segarkan (*refresh*). Aplikasi akan secara otomatis menghitung ulang seluruh jadwal sholat dan sudut kiblat berdasarkan lokasi baru Anda.</p>
+        </div>
+      </div>
+
+      <!-- Kategori 4: Al-Qur'an -->
+      <h2 class="faq-category-title">4. Al-Qur'an & Bacaan</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Apakah Al-Qur'an di Muslimate bisa dibaca tanpa internet (offline)?</span>
+        </div>
+        <div class="faq-answer">
+          <p><strong>Ya, 100% Offline.</strong> Seluruh 114 surat Al-Qur'an beserta teks Arab rasm Utsmani, transliterasi latin, dan terjemahan bahasa Indonesia resmi Kemenag telah tersimpan di dalam aplikasi. Anda tidak membutuhkan koneksi internet sama sekali untuk membacanya.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Bagaimana cara menandai ayat terakhir dibaca (Last Read)?</span>
+        </div>
+        <div class="faq-answer">
+          <p>Saat Anda membaca Al-Qur'an, aplikasi secara cerdas mengingat posisi surat dan ayat terakhir Anda. Anda juga dapat mengetuk ikon bookmark pada ayat tertentu untuk menyimpannya ke daftar bookmark pribadi Anda.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Contact Support Box -->
+    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2.5rem; text-align: center; margin-top: 3.5rem; box-shadow: var(--shadow-sm);">
+      <h3 style="font-size: 1.35rem; color: var(--primary-navy); margin-bottom: 0.75rem;">Masih Membutuhkan Bantuan?</h3>
+      <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 1.5rem;">Tim Muslimate siap mendengar masukan, laporan kendala teknis, atau pertanyaan Anda seputar aplikasi.</p>
+      <a href="mailto:muslimate.app@gmail.com" class="playstore-button" style="padding: 0.75rem 1.75rem; text-align: center; justify-content: center;">
+        <span class="btn-texts" style="text-align: center;">
+          <span class="main">Kirim Email ke muslimate.app@gmail.com</span>
+        </span>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h4>
+            <svg width="22" height="22" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="13" cy="13" r="12" stroke="#C9A961" stroke-width="1.2" opacity="0.35"/>
+              <path d="M8.5 17.5V12C8.5 9.5 10.5 7.5 13 7.5C15.5 7.5 17.5 9.5 17.5 12V17.5" stroke="#C9A961" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M7.5 17.5H18.5" stroke="#C9A961" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            Muslimate
+          </h4>
+          <p>Aplikasi Muslim modern untuk menemani ibadah harian dengan tenang, tepat waktu, dan bebas dari gangguan.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Navigasi</h5>
+          <ul>
+            <li><a href="../index.html">Beranda</a></li>
+            <li><a href="../bantuan/index.html">Pusat Bantuan</a></li>
+            <li><a href="../privasi/index.html">Kebijakan Privasi</a></li>
+            <li><a href="../syarat-ketentuan/index.html">Syarat & Ketentuan</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Hubungi Kami</h5>
+          <ul>
+            <li><a href="mailto:muslimate.app@gmail.com">muslimate.app@gmail.com</a></li>
+            <li><a href="https://www.instagram.com/muslimate.app" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@muslimate.app" target="_blank" rel="noopener">TikTok</a></li>
+            <li><a href="https://x.com/muslimate" target="_blank" rel="noopener">X (Twitter)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Muslimate. Seluruh hak cipta dilindungi.</p>
+        <p>Dirancang dengan ketenangan hati untuk Muslim di seluruh dunia.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

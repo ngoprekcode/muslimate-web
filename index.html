@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muslimate — Teman Ibadah Harianmu</title>
+  <meta name="description" content="Aplikasi Muslim modern bebas iklan mengganggu. Dilengkapi Al-Qur'an digital offline, jadwal sholat akurat, notifikasi adzan, kompas arah kiblat, dan hadits harian.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'><circle cx='13' cy='13' r='12' fill='%230F2A44'/><path d='M8.5 17.5V12a4.5 4.5 0 0 1 9 0v5.5' stroke='%23C9A961' stroke-width='1.5' fill='none'/></svg>">
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap');
+
+    :root {
+      --primary-navy: #0F2A44;
+      --primary-navy-dark: #0A1B2C;
+      --primary-navy-light: #183C60;
+      --gold-accent: #C9A961;
+      --gold-light: #F4EDE0;
+      --gold-hover: #B8934A;
+      --bg-warm: #FAF8F5;
+      --bg-card: #FFFFFF;
+      --text-main: #1A2838;
+      --text-muted: #5C6E82;
+      --text-light: #8E9EAF;
+      --border-subtle: #E8E4DC;
+      --border-focus: #C9A961;
+      --shadow-sm: 0 2px 8px rgba(15, 42, 68, 0.04);
+      --shadow-md: 0 8px 24px rgba(15, 42, 68, 0.08);
+      --shadow-lg: 0 16px 40px rgba(15, 42, 68, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --max-width: 1080px;
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-arabic: 'Amiri', serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-warm);
+      color: var(--text-main);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--primary-navy);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--gold-accent);
+    }
+
+    /* Header & Navigation */
+    header.site-header {
+      background: rgba(250, 248, 245, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: var(--primary-navy);
+      letter-spacing: -0.02em;
+    }
+
+    .brand-logo svg {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+
+    .brand-logo span.dot {
+      color: var(--gold-accent);
+    }
+
+    nav.main-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    nav.main-nav a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    nav.main-nav a:hover,
+    nav.main-nav a.active {
+      color: var(--primary-navy);
+    }
+
+    .nav-cta {
+      background: var(--primary-navy);
+      color: #FFFFFF !important;
+      padding: 0.55rem 1.25rem;
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--primary-navy-light);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.4rem 0.6rem;
+      cursor: pointer;
+      color: var(--primary-navy);
+      font-size: 1.25rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg-warm) 0%, rgba(201, 169, 97, 0.08) 100%);
+    }
+
+    .hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gold-light);
+      color: var(--primary-navy);
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(201, 169, 97, 0.3);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--primary-navy);
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2.25rem;
+      line-height: 1.7;
+    }
+
+    .playstore-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      background: var(--primary-navy);
+      color: #FFFFFF !important;
+      padding: 0.85rem 1.75rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      transition: all 0.25s ease;
+      font-weight: 600;
+      text-align: left;
+    }
+
+    .playstore-button:hover {
+      background: var(--primary-navy-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .playstore-button svg {
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+
+    .btn-texts {
+      text-align: left;
+      line-height: 1.2;
+    }
+
+    .btn-texts .sub {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.8;
+      display: block;
+    }
+
+    .btn-texts .main {
+      font-size: 1.15rem;
+      font-weight: 700;
+      display: block;
+    }
+
+    /* Features Grid */
+    .features-section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 4.5rem 1.5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary-navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .feature-card:hover {
+      border-color: var(--gold-accent);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--gold-light);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.35rem;
+      color: var(--primary-navy);
+    }
+
+    .feature-icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-navy);
+      margin-bottom: 0.65rem;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Quote Section */
+    .quote-section {
+      background: var(--primary-navy);
+      color: #FFFFFF;
+      padding: 4rem 1.5rem;
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .quote-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .quote-arabic {
+      font-family: var(--font-arabic);
+      font-size: 1.85rem;
+      color: var(--gold-accent);
+      direction: rtl;
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .quote-text {
+      font-size: 1.15rem;
+      font-style: italic;
+      margin-bottom: 0.75rem;
+      opacity: 0.95;
+    }
+
+    .quote-source {
+      font-size: 0.9rem;
+      color: var(--gold-accent);
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer.site-footer {
+      background: var(--primary-navy);
+      color: #FFFFFF;
+      padding: 4rem 1.5rem 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .footer-brand h4 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .footer-brand p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      max-width: 360px;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links h5 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold-accent);
+      margin-bottom: 1.15rem;
+      letter-spacing: 0.03em;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--text-light);
+      font-size: 0.92rem;
+    }
+
+    .footer-links a:hover {
+      color: #FFFFFF;
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.88rem;
+      color: var(--text-light);
+    }
+
+    .footer-bottom a {
+      color: var(--gold-accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      nav.main-nav {
+        display: none;
+      }
+      nav.main-nav.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-card);
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border-subtle);
+        box-shadow: var(--shadow-md);
+        gap: 1.25rem;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="./index.html" class="brand-logo">
+        <svg width="28" height="28" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="13" cy="13" r="12" stroke="#C9A961" stroke-width="1.2" opacity="0.35"/>
+          <path d="M8.5 17.5V12C8.5 9.5 10.5 7.5 13 7.5C15.5 7.5 17.5 9.5 17.5 12V17.5" stroke="#C9A961" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M7.5 17.5H18.5" stroke="#C9A961" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M11.5 17.5V15C11.5 14.2 12.2 13.5 13 13.5C13.8 13.5 14.5 14.2 14.5 15V17.5" stroke="#C9A961" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="13" cy="5.2" r="0.9" fill="#C9A961"/>
+        </svg>
+        Muslimate<span class="dot">.</span>
+      </a>
+
+      <button class="mobile-menu-btn" onclick="document.querySelector('.main-nav').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+
+      <nav class="main-nav">
+        <a href="#fitur">Fitur Utama</a>
+        <a href="./bantuan/index.html">Pusat Bantuan</a>
+        <a href="./privasi/index.html">Kebijakan Privasi</a>
+        <a href="./syarat-ketentuan/index.html">Syarat & Ketentuan</a>
+        <a href="https://play.google.com/store/apps/details?id=id.muslimate.app" class="nav-cta" target="_blank" rel="noopener">Download Gratis</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="badge-tag">
+        <span>✨</span> Aplikasi Muslim Modern & Ramah Privasi
+      </div>
+      <h1>Ibadah Lebih Tenang, Tepat Waktu, & Khusyuk</h1>
+      <p>Muslimate hadir sebagai sahabat ibadah harian Anda. Nikmati Al-Qur'an lengkap offline, jadwal sholat presisi, kumandang adzan otomatis, dan penunjuk arah kiblat yang akurat tanpa gangguan iklan berlebih.</p>
+      
+      <a href="https://play.google.com/store/apps/details?id=id.muslimate.app" class="playstore-button" target="_blank" rel="noopener">
+        <svg width="28" height="28" viewBox="0 0 512 512" fill="currentColor">
+          <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
+        </svg>
+        <span class="btn-texts">
+          <span class="sub">Tersedia di</span>
+          <span class="main">Google Play Store</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section" id="fitur">
+    <div class="section-header">
+      <h2>Fitur Lengkap untuk Keseharian Ibadahmu</h2>
+      <p>Setiap fitur dirancang dengan antarmuka yang bersih, nyaman di mata, dan mudah digunakan oleh siapa saja.</p>
+    </div>
+
+    <div class="features-grid">
+      <!-- Card 1 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+        <h3>Al-Qur'an Digital 100% Offline</h3>
+        <p>114 surat lengkap dengan teks rasm Utsmani, transliterasi latin, dan terjemahan resmi Kemenag RI. Dapat dibaca kapan saja tanpa membutuhkan koneksi internet.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3>Jadwal Sholat & Notifikasi Adzan</h3>
+        <p>Kalkulasi waktu sholat akurat sesuai koordinat lokasi Anda dengan dukungan pengingat otomatis dan kumandang adzan merdu untuk setiap waktu sholat.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+          </svg>
+        </div>
+        <h3>Kompas Arah Kiblat Presisi</h3>
+        <p>Penunjuk arah Ka'bah secara real-time menggunakan sensor kompas perangkat Anda. Temukan arah kiblat dengan cepat di mana pun Anda berada.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+          </svg>
+        </div>
+        <h3>Bookmark & Penanda Terakhir Baca</h3>
+        <p>Tandai ayat favorit dan lanjutkan tilawah tanpa khawatir lupa posisi bacaan terakhir. Semua riwayat tersimpan aman di ponsel Anda.</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Privasi Terjamin & Tanpa Iklan Pelacak</h3>
+        <p>Kami menghormati data Anda. Tidak ada pendaftaran akun, tidak ada pelacak perilaku periklanan, dan koordinat lokasi tidak pernah disimpan di server kami.</p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <h3>Ringan, Cepat, & Hemat Baterai</h3>
+        <p>Dikembangkan dengan arsitektur modern yang ringan dan efisien, sehingga tidak membebani memori maupun menguras daya baterai ponsel Anda.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Section -->
+  <section class="quote-section">
+    <div class="quote-inner">
+      <div class="quote-arabic">أَحَبُّ الْأَعْمَالِ إِلَى اللَّهِ الصَّلَاةُ عَلَى وَقْتِهَا</div>
+      <p class="quote-text">"Amalan yang paling dicintai oleh Allah adalah shalat pada waktunya."</p>
+      <p class="quote-source">— HR. Bukhari & Muslim</p>
+    </div>
+  </section>
+
+  <!-- CTA Banner Section -->
+  <section style="max-width: var(--max-width); margin: 4rem auto; padding: 0 1.5rem;">
+    <div style="background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-navy-light) 100%); border-radius: var(--radius-lg); padding: 3.5rem 2rem; text-align: center; color: #FFFFFF; box-shadow: var(--shadow-lg);">
+      <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 1rem;">Mulai Hari Ini Bersama Muslimate</h2>
+      <p style="color: var(--text-light); max-width: 600px; margin: 0 auto 2.25rem; font-size: 1.1rem; line-height: 1.7;">Unduh Muslimate sekarang secara gratis dan jadikan ibadah harian Anda lebih teratur dan menenangkan jiwa.</p>
+      <a href="https://play.google.com/store/apps/details?id=id.muslimate.app" class="playstore-button" target="_blank" rel="noopener" style="background: var(--gold-accent); color: var(--primary-navy) !important;">
+        <svg width="28" height="28" viewBox="0 0 512 512" fill="currentColor">
+          <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
+        </svg>
+        <span class="btn-texts">
+          <span class="sub" style="color: var(--primary-navy); opacity: 0.85;">Dapatkan di</span>
+          <span class="main" style="color: var(--primary-navy);">Google Play Store</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h4>
+            <svg width="22" height="22" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="13" cy="13" r="12" stroke="#C9A961" stroke-width="1.2" opacity="0.35"/>
+              <path d="M8.5 17.5V12C8.5 9.5 10.5 7.5 13 7.5C15.5 7.5 17.5 9.5 17.5 12V17.5" stroke="#C9A961" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M7.5 17.5H18.5" stroke="#C9A961" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            Muslimate
+          </h4>
+          <p>Aplikasi Muslim modern untuk menemani ibadah harian dengan tenang, tepat waktu, dan bebas dari gangguan.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Navigasi</h5>
+          <ul>
+            <li><a href="./index.html">Beranda</a></li>
+            <li><a href="./bantuan/index.html">Pusat Bantuan</a></li>
+            <li><a href="./privasi/index.html">Kebijakan Privasi</a></li>
+            <li><a href="./syarat-ketentuan/index.html">Syarat & Ketentuan</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Hubungi Kami</h5>
+          <ul>
+            <li><a href="mailto:muslimate.app@gmail.com">muslimate.app@gmail.com</a></li>
+            <li><a href="https://www.instagram.com/muslimate.app" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@muslimate.app" target="_blank" rel="noopener">TikTok</a></li>
+            <li><a href="https://x.com/muslimate" target="_blank" rel="noopener">X (Twitter)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Muslimate. Seluruh hak cipta dilindungi.</p>
+        <p>Dirancang dengan ketenangan hati untuk Muslim di seluruh dunia.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

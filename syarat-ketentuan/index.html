@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Syarat & Ketentuan Layanan — Muslimate</title>
+  <meta name="description" content="Syarat dan Ketentuan Layanan penggunaan aplikasi Muslimate. Panduan, hak cipta, dan batasan tanggung jawab.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'><circle cx='13' cy='13' r='12' fill='%230F2A44'/><path d='M8.5 17.5V12a4.5 4.5 0 0 1 9 0v5.5' stroke='%23C9A961' stroke-width='1.5' fill='none'/></svg>">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap');
+
+    :root {
+      --primary-navy: #0F2A44;
+      --primary-navy-dark: #0A1B2C;
+      --primary-navy-light: #183C60;
+      --gold-accent: #C9A961;
+      --gold-light: #F4EDE0;
+      --gold-hover: #B8934A;
+      --bg-warm: #FAF8F5;
+      --bg-card: #FFFFFF;
+      --text-main: #1A2838;
+      --text-muted: #5C6E82;
+      --text-light: #8E9EAF;
+      --border-subtle: #E8E4DC;
+      --border-focus: #C9A961;
+      --shadow-sm: 0 2px 8px rgba(15, 42, 68, 0.04);
+      --shadow-md: 0 8px 24px rgba(15, 42, 68, 0.08);
+      --shadow-lg: 0 16px 40px rgba(15, 42, 68, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --max-width: 1080px;
+      --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font-main); background-color: var(--bg-warm); color: var(--text-main); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: var(--primary-navy); text-decoration: none; transition: all 0.2s ease; }
+    a:hover { color: var(--gold-accent); }
+
+    /* Header */
+    header.site-header { background: rgba(250, 248, 245, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-subtle); }
+    .nav-container { max-width: var(--max-width); margin: 0 auto; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; position: relative; }
+    .brand-logo { display: flex; align-items: center; gap: 0.75rem; font-weight: 800; font-size: 1.35rem; color: var(--primary-navy); letter-spacing: -0.02em; }
+    .brand-logo svg { width: 32px; height: 32px; flex-shrink: 0; }
+    .brand-logo span.dot { color: var(--gold-accent); }
+    nav.main-nav { display: flex; align-items: center; gap: 1.75rem; }
+    nav.main-nav a { font-size: 0.95rem; font-weight: 600; color: var(--text-muted); }
+    nav.main-nav a:hover, nav.main-nav a.active { color: var(--primary-navy); }
+    .nav-cta { background: var(--primary-navy); color: #FFFFFF !important; padding: 0.55rem 1.25rem; border-radius: var(--radius-full); font-size: 0.9rem; font-weight: 600; }
+    .nav-cta:hover { background: var(--primary-navy-light); }
+    .mobile-menu-btn { display: none; background: none; border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 0.4rem 0.6rem; cursor: pointer; color: var(--primary-navy); font-size: 1.25rem; }
+
+    /* Content */
+    .content-page { max-width: 820px; margin: 2.5rem auto 5rem; padding: 0 1.5rem; }
+    .page-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-subtle); }
+    .page-header h1 { font-size: 2.4rem; font-weight: 800; color: var(--primary-navy); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .page-header .last-updated { font-size: 0.9rem; color: var(--text-muted); }
+    .article-body { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow-sm); }
+    .article-body h2 { font-size: 1.45rem; font-weight: 700; color: var(--primary-navy); margin: 2.2rem 0 0.85rem; }
+    .article-body h2:first-of-type { margin-top: 0; }
+    .article-body p { color: var(--text-main); margin-bottom: 1.15rem; font-size: 1rem; line-height: 1.7; }
+    .article-body ul, .article-body ol { margin: 0.5rem 0 1.5rem 1.5rem; color: var(--text-main); }
+    .article-body li { margin-bottom: 0.5rem; line-height: 1.6; }
+    .callout-box { background: var(--gold-light); border-left: 4px solid var(--gold-accent); padding: 1.25rem 1.5rem; border-radius: 0 var(--radius-md) var(--radius-md) 0; margin: 1.5rem 0; }
+    .callout-box p { margin-bottom: 0; font-size: 0.95rem; color: var(--primary-navy); }
+
+    /* Footer */
+    footer.site-footer { background: var(--primary-navy); color: #FFFFFF; padding: 4rem 1.5rem 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+    .footer-container { max-width: var(--max-width); margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3.5rem; }
+    .footer-brand h4 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.6rem; }
+    .footer-brand p { color: var(--text-light); font-size: 0.95rem; max-width: 360px; line-height: 1.6; }
+    .footer-links h5 { font-size: 1rem; font-weight: 700; color: var(--gold-accent); margin-bottom: 1.15rem; }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 0.75rem; }
+    .footer-links a { color: var(--text-light); font-size: 0.92rem; }
+    .footer-links a:hover { color: #FFFFFF; }
+    .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.88rem; color: var(--text-light); }
+    .footer-bottom a { color: var(--gold-accent); }
+
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+      .article-body { padding: 1.5rem; }
+      .mobile-menu-btn { display: block; }
+      nav.main-nav { display: none; }
+      nav.main-nav.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg-card); padding: 1.5rem; border-bottom: 1px solid var(--border-subtle); box-shadow: var(--shadow-md); gap: 1.25rem; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="../index.html" class="brand-logo">
+        <svg width="28" height="28" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="13" cy="13" r="12" stroke="#C9A961" stroke-width="1.2" opacity="0.35"/>
+          <path d="M8.5 17.5V12C8.5 9.5 10.5 7.5 13 7.5C15.5 7.5 17.5 9.5 17.5 12V17.5" stroke="#C9A961" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M7.5 17.5H18.5" stroke="#C9A961" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M11.5 17.5V15C11.5 14.2 12.2 13.5 13 13.5C13.8 13.5 14.5 14.2 14.5 15V17.5" stroke="#C9A961" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="13" cy="5.2" r="0.9" fill="#C9A961"/>
+        </svg>
+        Muslimate<span class="dot">.</span>
+      </a>
+
+      <button class="mobile-menu-btn" onclick="document.querySelector('.main-nav').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+
+      <nav class="main-nav">
+        <a href="../index.html">Beranda</a>
+        <a href="../bantuan/index.html">Bantuan & FAQ</a>
+        <a href="../privasi/index.html">Kebijakan Privasi</a>
+        <a href="../syarat-ketentuan/index.html" class="active">Syarat & Ketentuan</a>
+        <a href="https://play.google.com/store/apps/details?id=id.muslimate.app" class="nav-cta" target="_blank" rel="noopener">Unduh Aplikasi</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Content Section -->
+  <main class="content-page">
+    <div class="page-header">
+      <h1>Syarat & Ketentuan Layanan</h1>
+      <p class="last-updated">Terakhir diperbarui: 6 November 2026</p>
+    </div>
+
+    <article class="article-body">
+      <div class="callout-box">
+        <p>Dengan mengunduh, memasang, atau menggunakan aplikasi mobile <strong>Muslimate</strong>, Anda menyatakan telah membaca, memahami, dan menyetujui seluruh Syarat dan Ketentuan yang tercantum di bawah ini.</p>
+      </div>
+
+      <h2>1. Penerimaan Ketentuan</h2>
+      <p>Syarat dan Ketentuan Layanan ini ("Ketentuan") mengatur hubungan hukum antara Anda sebagai pengguna dengan pengembang <strong>Muslimate</strong> ("kami"). Jika Anda tidak menyetujui salah satu klausul dalam Ketentuan ini, Anda disarankan untuk tidak menggunakan atau mencopot aplikasi ini dari perangkat Anda.</p>
+
+      <h2>2. Deskripsi Layanan</h2>
+      <p>Muslimate adalah aplikasi alat bantu ibadah Islam digital yang menyediakan fitur:</p>
+      <ul>
+        <li>Teks Al-Qur'an digital (Rasm Utsmani), transliterasi latin, dan terjemahan.</li>
+        <li>Jadwal waktu sholat harian berdasarkan posisi koordinat perangkat.</li>
+        <li>Pengingat notifikasi adzan saat masuk waktu sholat.</li>
+        <li>Penunjuk arah kiblat menggunakan sensor kompas perangkat.</li>
+        <li>Kumpulan Hadits dan ayat renungan harian.</li>
+      </ul>
+
+      <h2>3. Penafian Akurasi & Keagamaan (Religious & Technical Disclaimer)</h2>
+      <p>Kami berupaya semaksimal mungkin menyajikan data yang sahih dan akurat. Namun, pengguna memahami dan menyetujui hal-hal berikut:</p>
+      <ul>
+        <li><strong>Jadwal Sholat:</strong> Waktu sholat dihitung secara matematis menggunakan algoritma hisab astronomi standar yang diakui. Ketepatan waktu dapat dipengaruhi oleh elevasi, variasi koordinat GPS, atau waktu pengaman (*ihtiyati*) yang ditentukan otoritas lokal. Apabila terdapat keraguan, kumandang adzan di masjid setempat tetap menjadi rujukan utama.</li>
+        <li><strong>Arah Kiblat:</strong> Penentuan arah kiblat bergantung langsung pada akurasi sensor kompas (*magnetometer*) ponsel Anda, kondisi medan elektromagnetik sekitar, dan kalibrasi perangkat. Muslimate tidak bertanggung jawab atas kesalahan arah yang diakibatkan oleh malfungsi perangkat keras atau interferensi logam/magnet.</li>
+        <li><strong>Teks Al-Qur'an & Terjemahan:</strong> Teks Al-Qur'an bersumber dari mushaf standar rasm Utsmani dan terjemahan resmi Kemenag RI. Kami melakukan verifikasi teliti, namun jika Anda menemukan kekeliruan ketik atau tampilan, mohon laporkan kepada kami untuk segera diperbaiki pada pembaruan berikutnya.</li>
+      </ul>
+
+      <h2>4. Hak Kekayaan Intelektual (Intellectual Property)</h2>
+      <ul>
+        <li><strong>Aset Muslimate:</strong> Seluruh desain antarmuka, tata letak visual, kode pemrograman, ikon merek, logo, dan nama dagang "Muslimate" adalah hak milik eksklusif pengembang Muslimate dan dilindungi oleh undang-undang hak cipta dan merek.</li>
+        <li><strong>Konten Religius:</strong> Firman Allah SWT dalam Al-Qur'an dan sabda Nabi Muhammad SAW dalam Hadits adalah milik bersama umat Islam sedunia.</li>
+        <li><strong>Audio Adzan:</strong> File audio adzan yang disertakan dalam aplikasi bersumber dari rekaman berlisensi domain publik (Creative Commons CC0 1.0 Universal).</li>
+      </ul>
+
+      <h2>5. Ketentuan Penggunaan yang Diperbolehkan</h2>
+      <p>Dalam menggunakan aplikasi Muslimate, Anda setuju untuk tidak:</p>
+      <ul>
+        <li>Melakukan dekompilasi, rekayasa balik (*reverse engineering*), atau membongkar kode sumber aplikasi untuk tujuan komersial ilegal.</li>
+        <li>Menggunakan aplikasi untuk tindakan yang melanggar hukum, norma kesusilaan, atau merugikan pihak lain.</li>
+        <li>Menyebarkan versi modifikasi aplikasi (*modded APK*) yang berpotensi menyisipkan malware atau merusak integritas merek Muslimate.</li>
+      </ul>
+
+      <h2>6. Batasan Tanggung Jawab (Limitation of Liability)</h2>
+      <p>Aplikasi Muslimate disediakan atas dasar <strong>"SEBAGAIMANA ADANYA" (*AS IS*)</strong> dan <strong>"SEBAGAIMANA TERSEDIA" (*AS AVAILABLE*)</strong> tanpa jaminan apa pun, baik tersurat maupun tersirat. Kami tidak bertanggung jawab atas segala kerugian materiil maupun immateriil, termasuk namun tidak terbatas pada keterlambatan sholat yang diakibatkan oleh kegagalan sistem alarm pihak ketiga/sistem operasi ponsel.</p>
+
+      <h2>7. Perubahan Layanan dan Ketentuan</h2>
+      <p>Kami berhak memodifikasi, memperbarui, menambah, atau menghentikan sementara fitur aplikasi sewaktu-waktu. Pembaruan pada Ketentuan ini akan berlaku segera setelah dipublikasikan pada halaman ini.</p>
+
+      <h2>8. Hukum yang Mengatur</h2>
+      <p>Syarat dan Ketentuan ini diatur dan ditafsirkan sesuai dengan hukum yang berlaku di <strong>Negara Kesatuan Republik Indonesia</strong>.</p>
+
+      <h2>9. Kontak & Informasi</h2>
+      <p>Pertanyaan, laporan kendala hukum, atau masukan mengenai Syarat dan Ketentuan ini dapat dialamatkan ke:</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:muslimate.app@gmail.com">muslimate.app@gmail.com</a></li>
+        <li><strong>Situs Resmi:</strong> <a href="https://muslimate.app">https://muslimate.app</a></li>
+      </ul>
+    </article>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h4>
+            <svg width="22" height="22" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="13" cy="13" r="12" stroke="#C9A961" stroke-width="1.2" opacity="0.35"/>
+              <path d="M8.5 17.5V12C8.5 9.5 10.5 7.5 13 7.5C15.5 7.5 17.5 9.5 17.5 12V17.5" stroke="#C9A961" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M7.5 17.5H18.5" stroke="#C9A961" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            Muslimate
+          </h4>
+          <p>Aplikasi Muslim modern untuk menemani ibadah harian dengan tenang, tepat waktu, dan bebas dari gangguan.</p>
+        </div>
+        <div class="footer-links">
+          <h5>Navigasi</h5>
+          <ul>
+            <li><a href="../index.html">Beranda</a></li>
+            <li><a href="../bantuan/index.html">Pusat Bantuan</a></li>
+            <li><a href="../privasi/index.html">Kebijakan Privasi</a></li>
+            <li><a href="../syarat-ketentuan/index.html">Syarat & Ketentuan</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h5>Hubungi Kami</h5>
+          <ul>
+            <li><a href="mailto:muslimate.app@gmail.com">muslimate.app@gmail.com</a></li>
+            <li><a href="https://www.instagram.com/muslimate.app" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.tiktok.com/@muslimate.app" target="_blank" rel="noopener">TikTok</a></li>
+            <li><a href="https://x.com/muslimate" target="_blank" rel="noopener">X (Twitter)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Muslimate. Seluruh hak cipta dilindungi.</p>
+        <p>Dirancang dengan ketenangan hati untuk Muslim di seluruh dunia.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
